@@ -2,7 +2,7 @@
 Course Sınıfı Özellikleri :
 Nitelikler : name,
              code,
-             prefix,
+             prefix(kısaltma),
              note,
              Teacher
 Metotlar :
@@ -16,7 +16,7 @@ Nitelikler :
             name,
             mpno,
             branch
-Metotlar : Teacher()Constructor.
+Metotlar : Teacher() Constructor.
 
 
 Student Sınıfı Özellikleri :
