@@ -1,6 +1,6 @@
 package deadlockstore;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class MethodsAndMain {
     static Scanner scan=new Scanner(System.in);
@@ -18,20 +18,23 @@ public class MethodsAndMain {
         int num1=scan.nextInt();
         switch (num1){
             case 1:
-                System.out.println("1'i secitiniz. Notebook islemleri sayfasına yönlendiriliyorsunuz");
+                System.out.println("1'i sectiniz. Notebook islemleri sayfasına yönlendiriliyorsunuz");
                 notebookIslemleriEkrani();
                 anaEkran();
                 break;
             case 2:
-                System.out.println("2'yi secitiniz. Cep Telefonu islemleri sayfasına yönlendiriliyorsunuz");
+                System.out.println("2'yi sectiniz. Cep Telefonu islemleri sayfasına yönlendiriliyorsunuz");
                 mobilePhoneIslemleriEkrani();
                 break;
             case 3:
                 System.out.println("3'ü sectiniz. Markalar listeleniyor..");
                 markaListele();
+                System.out.println("**********");
+                anaEkran();
+                break;
             case 0:
                 System.out.println("çıkışınız yapılıyor..");
-                cikis();
+                cikis(num1);
                 break;
             default:
                 System.out.println("hatali giris yaptiniz canim");
@@ -40,10 +43,24 @@ public class MethodsAndMain {
 
     }
 
-    private static void cikis() {
+    private static void cikis(int num) {
+        if (num==0){
+            System.out.println("cikisiniz yapildi.");
+
+        }else anaEkran();
     }
 
     private static void markaListele() {
+
+        List<Markalar> markList = new ArrayList<>(Arrays.asList(Markalar.values()));
+
+        Collections.sort(markList, (o1, o2) -> o1.toString().compareTo(o2.toString()));
+
+        int count = 1;
+        for (Markalar w : markList) {
+            System.out.println(count + ":" + w);
+            count++;
+        }
     }
 
     private static void mobilePhoneIslemleriEkrani() {

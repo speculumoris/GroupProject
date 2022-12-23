@@ -1,24 +1,6 @@
 package deadlockstore;
 
 public class MobilePhonePojo  {
-    /*
-   Cep Telefonu ürünlerinin özellikleri :
-   Ürünün sistemde kayıtlı benzersiz numarası
-   Birim fiyatı
-   İndirim oranı
-   Stok miktarı
-   Ürün adı
-   Marka bilgisi (Sistemde ekli olan markalar kullanılacaktır)
-   Telefonun hafıza bilgisi (128 GB, 64 GB)
-   Ekran Boyutu (6.1 Inc)
-
-   Pil Gücü (4000)
-
-   RAM (6 MB)
-
-   Renk (Siyah,Kırmızı,Mavi)
-
-    */
 
     private double birimFiyat;
     private int indOrani;
@@ -44,11 +26,12 @@ public class MobilePhonePojo  {
         this.hafizaInfo = hafizaInfo;
         this.ekranBoyutu = ekranBoyutu;
         this.kameraMps = kameraMps;
-        this.pilGucu = pilGucu;
+        this.pilGucu = 4000;
         this.ram = ram;
         this.renk = renk;
         this.indOrani=getIndOrani();
-        stokMik=getStokMik();
+        stokMik=getStokMik()+1;
+        this.id=getId();
     }
 
     public int getId() {
@@ -103,8 +86,8 @@ public class MobilePhonePojo  {
         return stokMik;
     }
 
-    public static void setStokMik(int stokMik) {
-        MobilePhonePojo.stokMik++;
+    public static void setStokMik(int stokMika) {
+       stokMik=stokMika;
     }
 
     public String getUrunAdi() {
@@ -150,15 +133,16 @@ public class MobilePhonePojo  {
     @Override
     public String toString() {
         return
-                "birimFiyat=" + birimFiyat +
-                "| indOrani=" + indOrani +
-                "| markaInfo=" + markaInfo +
-                "| urunAdi='" + urunAdi + '\'' +
-                "| hafizaInfo=" + hafizaInfo +
-                "| ekranBoyutu=" + ekranBoyutu +
-                "| kameraMps=" + kameraMps +
-                "| pilGucu=" + pilGucu +
-                "| ram=" + ram +
-                "| renk='" + renk + "\n" ;
+                "birimFiyat:" + birimFiyat +
+                "| indOrani:" + indOrani +
+                "| markaInfo:" + markaInfo +
+                "| urunAdi:'" + urunAdi + '\'' +
+                "| hafizaInfo:" + hafizaInfo +
+                "| ekranBoyutu:" + ekranBoyutu +
+                "| kameraMps:" + kameraMps +
+                "| pilGucu:" + pilGucu +
+                "| ram:" + ram +
+                "| renk:'" + renk +
+                "|stok miktarı:"+ stokMik+ "\n" ;
     }
 }

@@ -12,6 +12,7 @@ public enum Markalar {
     XIAOMI(1007),
     MONSTER(1008);
 
+
     private final int id;
 
     public int getId() {
