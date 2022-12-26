@@ -20,7 +20,6 @@ public class MethodsAndMain {
             case 1:
                 System.out.println("1'i sectiniz. Notebook islemleri sayfasına yönlendiriliyorsunuz");
                 notebookIslemleriEkrani();
-                anaEkran();
                 break;
             case 2:
                 System.out.println("2'yi sectiniz. Cep Telefonu islemleri sayfasına yönlendiriliyorsunuz");
@@ -66,7 +65,7 @@ public class MethodsAndMain {
     private static void mobilePhoneIslemleriEkrani() {
         MobilePhone mobilePhone=new MobilePhone();
        do {
-           System.out.println("yapmak istediginiz işlemi seçiniz\n" +
+           System.out.println("\nyapmak istediginiz işlemi seçiniz\n" +
                    "Urun eklemek icin 1'i\n" +
                    "Urun silmek icin 2'yi\n" +
                    "Urunleri listelemek icin 3'ü\n" +
@@ -100,6 +99,39 @@ public class MethodsAndMain {
     }
 
     private static void notebookIslemleriEkrani() {
+        Notebook nb=new Notebook();
+        do {
+            System.out.println("\nyapmak istediginiz işlemi seçiniz\n" +
+                    "Urun eklemek icin 1'i\n" +
+                    "Urun silmek icin 2'yi\n" +
+                    "Urunleri listelemek icin 3'ü\n" +
+                    "ana ekrana dönmek icin 4'ü" +
+                    " Tuşlayınız");
+
+            int num1 = scan.nextInt();
+            switch (num1) {
+                case 1:
+                    System.out.println("Urun ekleme kısmına yönlendiriliyorsunuz..");
+                    nb.urunEkle();
+                    break;
+                case 2:
+                    System.out.println("ürün silme kısmına yönlendiriliyorsunuz..");
+                    nb.urunSil();
+                    break;
+                case 3:
+                    System.out.println("Urunler listeleniyor..");
+                    nb.urunListele();
+                    break;
+                case 4:
+                    System.out.println("Ana ekrana yönlendiriliyorsunuz");
+                    anaEkran();
+                    break;
+                default:
+                    System.out.println("yanlis giris yaptınız tekrar deneyiniz");
+                    mobilePhoneIslemleriEkrani();
+                    break;
+            }
+        }while (true);
     }
 
 }
