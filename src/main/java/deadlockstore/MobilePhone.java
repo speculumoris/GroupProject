@@ -5,7 +5,7 @@ import com.sun.jdi.Value;
 import java.util.*;
 
 public class MobilePhone implements Repository {
-    int count =1000;
+    int count = 1000;
     static Scanner scan = new Scanner(System.in);
     static Map<Integer, MobilePhonePojo> mobilePhoneMap = new HashMap<>();
 
@@ -84,26 +84,37 @@ public class MobilePhone implements Repository {
 
     @Override
     public void urunSil() {
-        Set<Integer> mapKeys=new HashSet<>();
+        Set<Integer> mapKeys = new HashSet<>();
         mapKeys.addAll(mobilePhoneMap.keySet());
-        for (Integer w:mapKeys) {
-            System.out.println(w+":"+mobilePhoneMap.get(w).getUrunAdi());
+        for (Integer w : mapKeys) {
+            System.out.println(w + ":" + mobilePhoneMap.get(w).getUrunAdi());
         }
-        while(true) {
-        System.out.println("silmek istediginiz urunun kodunu giriniz");
-            System.out.println("cikis yapmak icin a basiniz:");
-            String count= scan.nextLine();
-            if (count.equalsIgnoreCase("a")) {
-                break;
-            } else {
+
+        try {
+            System.out.println("silmek istediginiz urunun kodunu giriniz");
+            System.out.println("cikis yapmak icin a'ya basiniz:");
+            String count = scan.nextLine();
+            while (true) {
+                if (count.equalsIgnoreCase("a")) {
+                    break;
+                }else{
+                    System.out.println("yanlis giris yaptiniz tekrar deneyiniz");
+                }
+
                 if (!mobilePhoneMap.containsKey(Integer.parseInt(count))) {
                     System.out.println("böyle bir id numarası yoktur tekrar deneyiniz");
-                    urunSil();
+                    count = scan.nextLine();
                 } else {
                     mobilePhoneMap.remove(Integer.parseInt(count));
+                    System.out.println("urun silindi");
                 }
-            }
 
+
+            }
+        } catch (NumberFormatException e) {
+            System.err.println("sayi girilmesi gerkiyor rakam dısında karakter girilemez");
+            System.out.println("hatalı giris yaptınız tekrar deneyiniz");
+            urunSil();
         }
     }
 
@@ -135,43 +146,43 @@ public class MobilePhone implements Repository {
                 str = String.valueOf(Markalar.APPLE);
                 System.out.println("Marka seciminiz: " + Markalar.APPLE);
                 mP.setBirimFiyat(2000);
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             case "6":
                 str = String.valueOf(Markalar.SAMSUNG);
                 System.out.println("Marka seciminiz: " + Markalar.SAMSUNG);
                 mP.setBirimFiyat(2000);
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             case "5":
                 str = String.valueOf(Markalar.LENOVO);
                 System.out.println("Marka seciminiz: " + Markalar.LENOVO);
                 mP.setBirimFiyat(1300);
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             case "4":
                 str = String.valueOf(Markalar.HUAWEI);
                 System.out.println("Marka seciminiz: " + Markalar.HUAWEI);
                 mP.setBirimFiyat(1600);
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             case "3":
                 str = String.valueOf(Markalar.CASPER);
                 System.out.println("Marka seciminiz: " + Markalar.CASPER);
                 mP.setBirimFiyat(1000);
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             case "7":
                 str = String.valueOf(Markalar.XIAOMI);
                 System.out.println("Marka seciminiz: " + Markalar.XIAOMI);
                 mP.setBirimFiyat(1600);
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             case "2":
                 str = String.valueOf(Markalar.ASUS);
                 System.out.println("Marka seciminiz: " + Markalar.ASUS);
                 mP.setBirimFiyat(1000);
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
         }
         classSecim(str, mP);
@@ -179,24 +190,32 @@ public class MobilePhone implements Repository {
 
     private void classSecim(String str, MobilePhonePojo mP) {
         mP.setMarkaInfo(Markalar.valueOf(str));
-       //apple1(str,mP);
-        List<String>markList=new ArrayList<>(Arrays.asList("APPLE Iphone 12","APPLE Iphone 13","APPLE Iphone 14","ASUS ZenFone 5z","ASUS Zenfone 4","CASPER Via X20","CASPER Vıa A4",
-                "LENOVO P2","LENOVO motoZ","XIAOMI 12T Pro","XIAOMI 11T Pro","HUAWEI mate 50 Pro","HUAWEI P50 Pro","SAMSUNG S20","SAMSUNG ZFold"));
-        List<String>marklist1=new ArrayList<>();
-        int counter=1;
-        for (String w:markList) {
-            if (w.contains(str)){
+        //apple1(str,mP);
+        List<String> markList = new ArrayList<>(Arrays.asList("APPLE Iphone 12", "APPLE Iphone 13", "APPLE Iphone 14", "ASUS ZenFone 5z", "ASUS Zenfone 4", "CASPER Via X20", "CASPER Vıa A4",
+                "LENOVO P2", "LENOVO motoZ", "XIAOMI 12T Pro", "XIAOMI 11T Pro", "HUAWEI mate 50 Pro", "HUAWEI P50 Pro", "SAMSUNG S20", "SAMSUNG ZFold"));
+        List<String> marklist1 = new ArrayList<>();
+        int counter = 1;
+        for (String w : markList) {
+            if (w.contains(str)) {
                 marklist1.add(w);
             }
         }
-        for (String w:marklist1) {
-            System.out.println(counter+":"+w);
+        for (String w : marklist1) {
+            System.out.println(counter + ":" + w);
             counter++;
 
         }
         System.out.println("lutfen seciminizi yapınız");
-        int c= scan.nextInt();
-        mP.setUrunAdi(marklist1.get(c-1));
+        int c = scan.nextInt();
+        do {
+            if (c > marklist1.size()) {
+                System.out.println("bu numarada bir urun yoktur tekrar deneyiniz");
+                c = scan.nextInt();
+            } else {
+                break;
+            }
+        } while (true);
+        mP.setUrunAdi(marklist1.get(c - 1));
 
     }
 
@@ -241,9 +260,6 @@ public class MobilePhone implements Repository {
      */
 
 
-
-
-
     private void depolamaAlanı(int num, MobilePhonePojo mP) {
         do {
             if (num > 2 || num < 1) {
@@ -256,15 +272,15 @@ public class MobilePhone implements Repository {
         switch (num) {
             case 1:
                 mP.setHafizaInfo(128);
-                mP.setBirimFiyat(mP.getBirimFiyat()+500);
+                mP.setBirimFiyat(mP.getBirimFiyat() + 500);
                 System.out.println("Depolama alanı 128 GB olarak sectiniz");
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
 
                 break;
             case 2:
                 mP.setHafizaInfo(64);
                 System.out.println("Depolama alanı 64 GB olarak sectiniz");
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             default:
                 System.out.println("yanlis secim yaptınız tekrar deneyiniz ");
@@ -286,13 +302,13 @@ public class MobilePhone implements Repository {
             case 1:
                 mP.setEkranBoyutu(6.1);
                 System.out.println("ekran boyutu 6.1 inc olarak secildi");
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             case 2:
                 mP.setEkranBoyutu(6.4);
                 System.out.println("ekran boyutu 6.4 inc olarak secildi");
-                mP.setBirimFiyat(mP.getBirimFiyat()+500);
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                mP.setBirimFiyat(mP.getBirimFiyat() + 500);
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             default:
                 System.out.println("yanlis secim yaptınız tekrar deneyiniz ");
@@ -315,25 +331,25 @@ public class MobilePhone implements Repository {
             case 1:
                 mP.setKameraMps(30);
                 System.out.println("30 megapikselli kamera secildi");
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             case 2:
                 mP.setKameraMps(35);
                 System.out.println("35 megapikselli kamera secildi");
-                mP.setBirimFiyat(mP.getBirimFiyat()+500);
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                mP.setBirimFiyat(mP.getBirimFiyat() + 500);
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             case 3:
                 mP.setKameraMps(40);
                 System.out.println("40 megapikselli kamera secildi");
-                mP.setBirimFiyat(mP.getBirimFiyat()+1000);
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                mP.setBirimFiyat(mP.getBirimFiyat() + 1000);
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             case 4:
                 mP.setKameraMps(45);
                 System.out.println("45 megapikselli kamera secildi");
-                mP.setBirimFiyat(mP.getBirimFiyat()+1500);
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                mP.setBirimFiyat(mP.getBirimFiyat() + 1500);
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             default:
                 System.out.println("yanlis secim yaptınız tekrar deneyiniz ");
@@ -355,19 +371,19 @@ public class MobilePhone implements Repository {
             case 1:
                 mP.setRam(4);
                 System.out.println("Ram 4 GB olarak secildi");
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             case 2:
                 mP.setRam(8);
                 System.out.println("Ram 8 GB olarak secildi");
-                mP.setBirimFiyat(mP.getBirimFiyat()+500);
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                mP.setBirimFiyat(mP.getBirimFiyat() + 500);
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             case 3:
                 mP.setRam(16);
                 System.out.println("Ram 16 GB olarak secildi");
-                mP.setBirimFiyat(mP.getBirimFiyat()+1500);
-                System.out.println("fiyat "+mP.getBirimFiyat()+" ₺");
+                mP.setBirimFiyat(mP.getBirimFiyat() + 1500);
+                System.out.println("fiyat " + mP.getBirimFiyat() + " ₺");
                 break;
             default:
                 System.out.println("yanlis secim yaptınız tekrar deneyiniz ");

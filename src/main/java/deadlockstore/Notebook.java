@@ -72,22 +72,28 @@ public class Notebook implements Repository{
         for (Integer w:mapKeys) {
             System.out.println(w+":"+noteMap.get(w).getUrunAdi());
         }
-        while(true) {
-            System.out.println("silmek istediginiz urunun kodunu giriniz");
-            System.out.println("cikis yapmak icin a basiniz:");
-            String count= scan.nextLine();
-            if (count.equalsIgnoreCase("a")) {
-                break;
-            } else {
-                if (!noteMap.containsKey(Integer.parseInt(count))) {
-                    System.out.println("böyle bir id numarası yoktur tekrar deneyiniz");
-                    urunSil();
+        try {
+            while(true) {
+                System.out.println("silmek istediginiz urunun kodunu giriniz");
+                System.out.println("cikis yapmak icin a basiniz:");
+                String count= scan.nextLine();
+                if (count.equalsIgnoreCase("a")) {
+                    break;
                 } else {
-                    noteMap.remove(Integer.parseInt(count));
-                    System.out.println("ürün basarıyla silindi");
+                    if (!noteMap.containsKey(Integer.parseInt(count))) {
+                        System.out.println("böyle bir id numarası yoktur tekrar deneyiniz");
+                        urunSil();
+                    } else {
+                        noteMap.remove(Integer.parseInt(count));
+                        System.out.println("ürün basarıyla silindi");
+                    }
                 }
-            }
 
+            }
+        } catch (NumberFormatException e) {
+            System.err.println("sayi girilmesi gerkiyor rakam dısında karakter girilemez");
+            System.out.println("hatalı giris yaptınız tekrar deneyiniz");
+            urunSil();
         }
 
     }
@@ -229,7 +235,7 @@ public class Notebook implements Repository{
 
     private void urunSecimi(String num, NotebookPojo nP) {
         do {
-            if (Integer.parseInt(num) > 9 || Integer.parseInt(num) < 1) {
+            if (Integer.parseInt(num) > 8 || Integer.parseInt(num) < 1) {
                 System.out.println("girdiginiz aralıkta herhangi bir secim yapamazsınız tekrar deneyiniz");
                 num = scan.nextLine();
             } else {
@@ -285,12 +291,6 @@ public class Notebook implements Repository{
                 nP.setBirimFiyat(2000);
                 System.out.println("marka olarak "+Markalar.SAMSUNG+"\n"+" sectiniz baslangic ücreti: "+nP.getBirimFiyat()+" ₺");
                 break;
-            case "9":
-                num=String.valueOf(Markalar.XIAOMI);
-                nP.setUrunAdi(num);
-                nP.setBirimFiyat(2000);
-                System.out.println("marka olarak "+Markalar.XIAOMI+"\n"+" sectiniz baslangic ücreti: "+nP.getBirimFiyat()+" ₺");
-                break;
         }
         classSecimi(nP,num);
     }
@@ -313,6 +313,14 @@ public class Notebook implements Repository{
         }
         System.out.println("lutfen seciminizi yapınız");
         int c= scan.nextInt();
+       do {
+           if (c>marklist1.size()){
+               System.out.println("bu numarada bir urun yoktur tekrar deneyiniz");
+               c= scan.nextInt();
+           }else {
+               break;
+           }
+       }while (true);
         nP.setUrunAdi(marklist1.get(c-1));
     }
 
