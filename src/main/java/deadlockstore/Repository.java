@@ -8,4 +8,5 @@ public interface Repository {
 
     void urunListele();
 
+
 }

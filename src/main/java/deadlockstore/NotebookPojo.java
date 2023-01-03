@@ -15,7 +15,7 @@ public class NotebookPojo {
     public NotebookPojo() {
     }
 
-    public NotebookPojo(String urunAdi,double birimFiyat,String markaInfo, int ramNo, int depolInfo, double ekranB,String renkN) {
+    public NotebookPojo(String urunAdi,double birimFiyat,String markaInfo, int ramNo, int depolInfo, double ekranB, String renkN) {
         this.birimFiyat = birimFiyat;
         this.urunAdi = urunAdi;
         this.markaInfo = markaInfo;

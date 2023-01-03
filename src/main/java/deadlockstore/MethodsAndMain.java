@@ -12,15 +12,15 @@ public class MethodsAndMain {
     }
 
     public static void anaEkran() {
-        boolean flag = true;
-        do {
+        boolean flag = false;
+
             System.out.println("Ürün Yönetim Paneli !\n" +
                     "1 - Notebook İşlemleri\n" +
                     "2 - Cep Telefonu İşlemleri\n" +
                     "3 - Marka Listele\n" +
-                    "4 - Çıkış Yap");
+                    "0 - Çıkış Yap");
 
-            int num1 = scan.nextInt();
+            int num1 = scan.nextInt();scan.nextLine();
             if (num1 == 1) {
                 System.out.println("1'i sectiniz. Notebook islemleri sayfasına yönlendiriliyorsunuz");
                 notebookIslemleriEkrani();
@@ -34,24 +34,26 @@ public class MethodsAndMain {
                 System.out.println("**********");
                 anaEkran();
 
-            } else if (num1 == 4) {
+            } else if (num1 == 0) {
                 cikis(num1);
-                flag = false;
+                flag = true;
+                System.out.println("buraya girdi");
+
+
 
             } else {
                 System.out.println("hatali giris yaptiniz canim");
             }
-        } while (flag);
+
     }
 
     private static void cikis(int num1) {
-        boolean flag = true;
-        do {
-            if (num1 == 4) {
-                flag = false;
-            }
-            System.out.println("cikisiniz yapildi.");
-        } while (flag);
+        switch (num1){
+            case 0:
+                System.out.println("cikisiniz yapiliyor");
+                break;
+        }
+
     }
 
 
@@ -78,7 +80,7 @@ public class MethodsAndMain {
                     "ana ekrana dönmek icin 4'ü" +
                     " Tuşlayınız");
 
-            int num = scan.nextInt();
+            int num = scan.nextInt();scan.nextLine();
             switch (num) {
                 case 1:
                     System.out.println("Urun ekleme kısmına yönlendiriliyorsunuz..");

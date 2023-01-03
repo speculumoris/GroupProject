@@ -19,7 +19,6 @@ public class Notebook implements Repository{
         6:LENOVO
         7:MONSTER
         8:SAMSUNG
-
          */
         NotebookPojo nP=new NotebookPojo();
         System.out.println("Telefon icin urun ekleme bölümündesiniz");
@@ -338,9 +337,4 @@ public class Notebook implements Repository{
         }
     }
 
-
-
-    public static void main(String[] args) {
-
-    }
 }

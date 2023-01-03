@@ -75,7 +75,9 @@ public class MobilePhone implements Repository {
 
             System.out.println("Urun basarıyla eklendi");
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("hatali giris yapılı veya rakam dışında giriş yapıldı");
+            System.out.println("işlemler tekrarlanacak");
+            urunEkle();
         }
 
 
@@ -208,7 +210,7 @@ public class MobilePhone implements Repository {
         System.out.println("lutfen seciminizi yapınız");
         int c = scan.nextInt();
         do {
-            if (c > marklist1.size()) {
+            if (c > marklist1.size() || c<0) {
                 System.out.println("bu numarada bir urun yoktur tekrar deneyiniz");
                 c = scan.nextInt();
             } else {
