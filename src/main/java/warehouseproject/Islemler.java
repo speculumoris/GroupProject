@@ -52,6 +52,7 @@ public class Islemler {
                 break;
 
         }
+
     }
 
         private static void alinanUrun1() {

@@ -1,14 +1,25 @@
 package warehouseproject;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="t_urunler")
 public class Urunler {
 
-
+    @Id
     private Long urunId;
+    @Column(name ="URUN" ,nullable = false)
     private String urunIsmi;
+    @Column(name = "URETICI",nullable = false)
     private String uretici;
+    @Column(name="BIRIM",nullable = false)
     private String birim;
+    @Column(name="BIRIM",nullable = false)
     private int miktar;
+    @Column(name="RAFNO",nullable = false)
     private String rafNo;
 
     public Urunler() {
@@ -72,7 +83,7 @@ public class Urunler {
                 ", uretici=" + uretici  +
                 ", birim=" + birim   +
                 ", miktar=" + miktar +
-                ", rafNo=" + rafNo + "\n";
+                ", rafNo=" + rafNo ;
     }
 
 
