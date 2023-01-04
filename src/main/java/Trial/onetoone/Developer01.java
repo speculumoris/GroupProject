@@ -11,8 +11,15 @@ public class Developer01 {
     @Column(name = "dev_Name",nullable = false)
     private String name;
 
+    private String eMail;
+
+    private String branch;
+
+
+
+
     @OneToOne
-    @JoinColumn
+    @JoinColumn(name="laptop_id")
     private Laptop01 laptop;
 
     public Developer01() {
@@ -22,6 +29,30 @@ public class Developer01 {
         this.id = id;
         this.name = name;
         this.laptop = laptop;
+    }
+
+    public Developer01(int id, String name, String eMail, String branch, Laptop01 laptop) {
+        this.id = id;
+        this.name = name;
+        this.eMail = eMail;
+        this.branch = branch;
+        this.laptop = laptop;
+    }
+
+    public String geteMail() {
+        return eMail;
+    }
+
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
+    }
+
+    public String getBranch() {
+        return branch;
+    }
+
+    public void setBranch(String branch) {
+        this.branch = branch;
     }
 
     public int getId() {
